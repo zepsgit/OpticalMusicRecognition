@@ -9,18 +9,12 @@ from skimage.color import rgb2gray
 from skimage.morphology import square, erosion, dilation, closing, opening
 from segmenter import Segmenter
 from commonfunctions import *
-from staff_remove import *
 
-PATH='testcases\\'
-NAME='y.png' 
-
-img=cv2.imread(PATH+NAME,0)
-img1 = img.copy()#original 
-k=knl_generator('median', 3, 0)
-img2=filter(img1, 'nonlinear', k)#filtered image
-cv2.imwrite(PATH+'img2.png',img2)
-myth=find_th(img)
-img3=bi_image(img2, myth)#binarize img2
-cv2.imwrite(PATH+'img3.png', img3*255)
-img4=rle_remove(img3)
+def rle_remove(bi_img):
+    segmenter = Segmenter(bi_img)
+    imgs_with_staff = segmenter.regions_with_staff
+    imgs_without_staff = segmenter.regions_without_staff
+    for i, img in enumerate(imgs_without_staff):
+        show_images([img, imgs_with_staff[i]])
+        cv2.imwrite('testcases\\('+str(i)+').png', img*255)
 

@@ -1,5 +1,5 @@
 Activity diagram
-![alt text](https://github.com/zepsgit/OpticalMusicRecognition/blob/master/ActivityDiagram.pdf)
+![alt text](https://github.com/zepsgit/OpticalMusicRecognition/blob/master/class%20diagram.PNG)
 Input iamge
 ![alt text](https://github.com/zepsgit/OpticalMusicRecognition/blob/master/testcases/y.png)
 Output image
